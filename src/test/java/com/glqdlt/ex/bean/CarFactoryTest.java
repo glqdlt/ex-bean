@@ -1,6 +1,8 @@
 package com.glqdlt.ex.bean;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +26,23 @@ public class CarFactoryTest {
     @Autowired
     Car avantte;
 
-    @Test
+    @Before
     public void init(){
+        echoCarName();
+    }
+    @After
+    public void end(){
+        echoCarName();
+    }
 
+    private void echoCarName() {
+        log.info("ref :{}, name:{}",sonata,sonata.toString());
+        log.info("ref :{}, name:{}",avantte,avantte.toString());
     }
 
     @Test
-    public void getCarName(){
-        log.info("ref :{}, name:{}",sonata,sonata.toString());
-        log.info("ref :{}, name:{}",avantte,avantte.toString());
-
+    public void changeCarName(){
+        sonata.changeCarName("sonata 2");
     }
 
 }
